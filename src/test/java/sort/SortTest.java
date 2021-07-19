@@ -75,4 +75,19 @@ public class SortTest {
         // count:20,0000 type:3 time 64750 66951 53330 53483 58174
         // count:20,0000 type:4 time 36404 36936 36256 35898 36086
     }
+    @RepeatedTest(5)
+    public void mergeCopyTest() {
+        long start=System.currentTimeMillis();
+        Integer[] data={1,3,2,4,8,5,6,9};
+        MergeCopy bean = new MergeCopy(data);
+        //bean.openDebug();
+        bean.sort();
+        System.out.println(System.currentTimeMillis()-start);
+        //bean.show();
+        Assertions.assertTrue(bean.isSorted());
+        // count:20,0000 type:1 time 92 14 13 12 13
+        // count:20,0000 type:2 time 45 15 12 13 13
+        // count:20,0000 type:3 time 119 60 61 59 49
+        // count:20,0000 type:4 time 67 31 34 33 38
+    }
 }
