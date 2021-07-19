@@ -1,5 +1,7 @@
 package sort;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.util.stream.Stream;
 
 public abstract class Template {
@@ -24,6 +26,9 @@ public abstract class Template {
     protected boolean less(Comparable a, Comparable b) {
         return a.compareTo(b) < 0;
     }
+    protected boolean lessEqual(Comparable a, Comparable b) {
+        return a.compareTo(b) <= 0;
+    }
 
     protected void exch(int i, int j) {
         Comparable t = data[i];
@@ -32,11 +37,7 @@ public abstract class Template {
     }
 
     protected void show() {
-        Stream
-                .of(data)
-                .map(t -> t + " ")
-                .forEach(System.out::println);
-        System.out.println();
+        System.out.println("OriginData:"+ StringUtils.join(data,","));
     }
 
     protected boolean isSorted() {
